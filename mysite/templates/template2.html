@@ -1,0 +1,28 @@
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+user list<button id>="add"+</button><br>
+
+{% for l in data %}
+
+    이름 {{l.name}} 나이 {{l.age}} <br>
+
+{% endfor %}
+
+<!--'='은 자기 자신을 의미, 자기자신을 호출한다는것은 사용자가 입력한것이 곧, 자기 자신이 된다는것이다. -->
+<form action="listuser">
+    <input type="text" name="q">
+    <input type="submit" value="검색">
+</form>
+
+<div id="layer">
+<!--하나의 url가지고, GET방식일때, POST방식일때 구분이 가능하다. 폼을 띄우는것은 GET방식, 처리는 POST방식-->
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" value="userid">
+    <input type="text" value="name">
+    <input type="text" value="age">
+    <input type="text" value="hobby">
+    <input type="submit" value="Add">
+</form>
+</div>
+
+<!--GET방식인지, POST인지 구분하는것은 보통 앞쪽(윗쪽)에 많이 쓴다.-->

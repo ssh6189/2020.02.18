@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<!-- 사실 form action = http;//localhost:8000 이게 생략된것이다. -->
+<form action=/login method=get>
+    id <input type = text name = id> <br>
+    pwd <input type = text name = pwd> <br>
+    <input type = submit value = "로그인">
+</form>
+
+Yolo image 갤러리  <br>
+<!--action + http://127.0.0.1:80-->
+
+<form action = "/uploadimage" method = "POST"
+       enctype = "multpart/form-data">
+     <input type = "file" name = "file1"/> <br>
+     <input type = "submit" value = "얼굴인증"/>
+</form>

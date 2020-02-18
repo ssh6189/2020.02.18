@@ -1,0 +1,14 @@
+{% extends 'blog/base.html'%}
+
+{% block content %}
+
+{% for d in data%}
+
+<a href="{% url 'detail' d.pk %}"> {{d.title}} </a> <br>
+<!--    <a href="/blog/{{d.pk}}/detail">{{d.title}}</a> <br>, 이것보다, 아래와 같은 표현이 더 일반적인 방법이다.-->
+<!--%는 템플릿 명령어 쓸때-->
+<!--<a href="/blog/detail?id={{d.pk}}"> {{d.title}}</a><br>-->
+<!--<a href="detail?id={{d.pk}}">{{d.title}}</a><br>-->
+{% endfor %}
+{% endblock %}
+

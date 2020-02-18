@@ -1,0 +1,10 @@
+<form action="{% url 'edit' pk %}" method=post>
+    {% csrf_token %}
+ 
+        {{ form.as_p }}
+    <!--제목 <input type="text" name="title"/><br>-->
+    <!--내용 <textarea rows="10" cols="30" name="text"></textarea><br>-->
+
+    <input type="submit" value="작성" >
+
+</form>

@@ -1,0 +1,58 @@
+<!--form이 있어야, 서버요청이 된다.-->
+<!--<form action="calc">-->
+<!--여기서, name과 id는 같아야한다.-->
+<!--구분자"" 쓰고 안쓰고는, " "같은거 쓰려고-->
+<!--만약, name=op1을 안쓰면, 입력은 되지만, 값이 서버로 넘어가지 않는다.-->
+<!--id는 HTML에서 정의한것이므로, 바꿀 수 없으며, 관행이다.-->
+
+<!--jquery 사용-->
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+<!--value는 default값-->
+아이디 <input type=text name=id id="id"> <br>
+암호 <input type=text name=pwd id="pwd"> <br>
+<!--btn은 버튼이라는 의미-->
+<button id="btnCalc">로그인</button>
+<!--</form>-->
+
+<!--javascript 구문-->
+<!--alert : 메세지 출력-->
+<script>
+    /*
+    ID가 op1인 애를 리턴
+    op1 = document.getElementById("op1");
+    default 값 설정 및 변경
+    op1.value = 20;
+    alert(op1.value);
+
+    #은 아이디, .은 클래스를 의미
+    tag가 op1인것을 의미
+
+    $("#op1").val(40);
+    alert( $("#op1").val());
+    
+    요 버튼을 클릭했을때 함수를 실행해 주세요.
+    아래와 같이 이름 없는 함수를 익명함수라고 한다.
+    */
+    $("#btnCalc").click(function(){
+        var param = {id:$("#id").val(), pwd:$("#pwd").val()};
+        $.get("/ajax/login", param, function(data) {
+          // alert(JSON.stringify(data));
+          // console.log(JSON.stringfy(data))
+        
+          if ( data.error == 0) location.href = "/ajax"
+          else {
+              $("#id").focus();
+              $("#id").val("");
+              $("#pwd").val("");
+              alert(data.message);
+            }
+
+       // alert("bbbb");
+            });
+        // 비동기 방식이라, aaaa가 먼저 나온다.
+       // alert("aaaa");
+    });
+
+</script>
